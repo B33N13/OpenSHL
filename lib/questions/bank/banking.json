@@ -1,0 +1,123 @@
+[
+  {
+    "id": "bank-num-001",
+    "track": "banking",
+    "type": "numerical",
+    "difficulty": "medium",
+    "stem": "A major South African bank reports the following home loan advances (in R millions) at 30 June in consecutive years.",
+    "table": {
+      "headers": [
+        "Category",
+        "Jun 2025",
+        "Jun 2024"
+      ],
+      "rows": [
+        [
+          "Home loans — Consumer Banking",
+          "1,928",
+          "1,847"
+        ],
+        [
+          "Home loans — Relationship Banking",
+          "562",
+          "518"
+        ],
+        [
+          "Total home loans",
+          "2,490",
+          "2,365"
+        ]
+      ]
+    },
+    "question": "What was the percentage increase in total home loan advances between June 2024 and June 2025? Round to one decimal place.",
+    "options": [
+      {
+        "id": "A",
+        "text": "4.4%",
+        "isCorrect": false,
+        "whyWrong": "This is the growth in Consumer Banking home loans only (81 ÷ 1,847). Wrong row."
+      },
+      {
+        "id": "B",
+        "text": "5.3%",
+        "isCorrect": true
+      },
+      {
+        "id": "C",
+        "text": "5.0%",
+        "isCorrect": false,
+        "whyWrong": "Uses the 2025 value as the base (125 ÷ 2,490). Wrong-base trap."
+      },
+      {
+        "id": "D",
+        "text": "3.7%",
+        "isCorrect": false,
+        "whyWrong": "Estimate from rounding before dividing."
+      }
+    ],
+    "explanation": "**Step 1 — Name the quantity:** percentage change.\n**Step 2 — Choose the base:** the original (2024) value, R2,365m.\n**Step 3 — Difference:** 2,490 − 2,365 = 125.\n**Step 4 — Calculate:** (125 ÷ 2,365) × 100 = 5.3%.\n**Answer: B.**\n\nThe trap is C: using the new value as the denominator. The base of a percentage change is always the *old* value.",
+    "trapTags": [
+      "wrong_base",
+      "wrong_row"
+    ]
+  },
+  {
+    "id": "bank-verb-001",
+    "track": "banking",
+    "type": "verbal",
+    "difficulty": "medium",
+    "passage": "In its April 2025 household lending update, a research house reported that the mortgage market makes up more than 58% of household loans. Mortgage lending increased by 2.3% year-on-year in April, while personal lending declined by 0.5%. The report noted that mortgage lending remains muted due to a lack of affordability. It did not provide a breakdown of lending by income group.",
+    "statements": [
+      {
+        "statement": "Mortgage lending grew faster than personal lending in April 2025.",
+        "answer": "true",
+        "justification": "The passage says mortgage lending increased by 2.3% while personal lending declined by 0.5%. A positive rate is faster than a negative one."
+      },
+      {
+        "statement": "Mortgage lending growth was strongest among high-income households.",
+        "answer": "cannot_say",
+        "justification": "The passage explicitly says it 'did not provide a breakdown of lending by income group.' No line confirms or contradicts this."
+      }
+    ]
+  },
+  {
+    "id": "bank-ind-001",
+    "track": "banking",
+    "type": "inductive",
+    "difficulty": "easy",
+    "sequence": [
+      "4",
+      "9",
+      "19",
+      "39",
+      "79",
+      "?"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "158",
+        "isCorrect": false,
+        "whyWrong": "Doubling only, forgetting the +1."
+      },
+      {
+        "id": "B",
+        "text": "159",
+        "isCorrect": true
+      },
+      {
+        "id": "C",
+        "text": "160",
+        "isCorrect": false,
+        "whyWrong": "Adding 1 before doubling."
+      },
+      {
+        "id": "D",
+        "text": "157",
+        "isCorrect": false,
+        "whyWrong": "Adding 78 instead of applying the rule."
+      }
+    ],
+    "explanation": "Each term is double the previous term plus 1: 4×2+1=9, 9×2+1=19, 19×2+1=39, 39×2+1=79. Next: 79×2+1 = **159**."
+  }
+]
