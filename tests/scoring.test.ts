@@ -25,6 +25,20 @@ const deductive = QuestionSchema.parse({
 });
 
 describe('scoring', () => {
+  it('scores all-correct as full credit', () => {
+    expect(scoreAssessment(bankingQuestions, {
+      'bank-num-001': 'B', 'bank-verb-001': ['true', 'cannot_say'], 'bank-ind-001': 'B'
+    })).toEqual({ score: 3, total: 3 });
+  });
+  it('scores all-wrong as zero', () => {
+    expect(scoreAssessment(bankingQuestions, {
+      'bank-num-001': 'A', 'bank-verb-001': ['false', 'true'], 'bank-ind-001': 'A'
+    })).toEqual({ score: 0, total: 3 });
+  });
+  it('scores verbal with one wrong statement as zero', () => {
+    expect(scoreQuestion(bankingQuestions[1], ['true', 'false'])).toEqual({ points: 0, isCorrect: false });
+  });
+
   it('scores the hand-worked seed example as 2/3', () => {
     // Numerical B = 1; both verbal statements correct = 1; inductive A = 0.
     expect(scoreAssessment(bankingQuestions, {
