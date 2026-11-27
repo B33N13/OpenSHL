@@ -41,3 +41,13 @@ Dependencies could not be installed in the initial workspace because registry DN
 ## Review gates
 
 Phase 2: local assessment renderers/results and one Playwright happy path, after resolving seed coverage. Phase 3: Supabase migrations, RLS, magic links, consent, age restriction, persistence and account deletion. Phase 4: owner-sourced remaining banks, dashboard, PWA, Vercel deployment and measured mobile performance. Stop for owner review after each phase.
+
+## Phase 2 progress — sub-step 2
+
+Question renderers and session state are implemented. Assessment, results and track screens remain pending their review gates. No auth or database code has been added.
+
+Run `npm run dev` and open http://localhost:3000/preview to inspect the three approved banking questions. The gallery is development-only and returns 404 in production; it is not an assessment session.
+
+`lib/session/useAssessmentSession.ts` is the sole module accessing sessionStorage. `createAssessmentSession(track, questions)` creates a client UUID and stores the question snapshot under that UUID. `useAssessmentSession(id)` exposes `session`, `answer`, `next`, and `finish`. A session is `undefined` during hydration, `null` when unavailable, or the validated session object when ready. Invalid/incomplete answers are rejected. Storage writes happen before state changes, and write errors propagate so callers can report them and avoid navigating away. Finished sessions are immutable through the hook, with idempotent completion and fractional scores preserved. Session state lasts within the current browser tab; cross-device persistence is outside Phase 2.
+
+Verification now runs both locally using a standalone Node runtime and in GitHub Actions. Sub-step 2 has 41 passing unit tests, including storage failure, hydration, reload persistence, answer gating, completion, verbal all-or-nothing and SJT half-points. The original setup limitation above records the initial Phase 1 environment.

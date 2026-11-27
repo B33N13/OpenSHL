@@ -89,7 +89,8 @@ describe('assessment session', () => {
   });
   it('treats malformed stored data as unavailable', async () => {
     vi.spyOn(Storage.prototype, 'getItem').mockReturnValue('{broken');
-    const { result } = renderHook(() => useAssessmentSession(crypto.randomUUID()));
+    const id = crypto.randomUUID();
+    const { result } = renderHook(() => useAssessmentSession(id));
     await waitFor(() => expect(result.current.session).toBeNull());
   });
   it('does not advance state when persistence fails', async () => {
