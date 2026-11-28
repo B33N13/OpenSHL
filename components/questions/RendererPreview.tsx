@@ -28,7 +28,7 @@ export function RendererPreview() {
     </header>
     <div className="space-y-2">
       <Button onClick={startPreview}>Try three-question assessment</Button>
-      <p className="text-sm text-muted-foreground">Uses the approved questions. The results screen is the next sub-step.</p>
+      <p className="text-sm text-muted-foreground">Uses the three approved banking questions, with results and answer review.</p>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
     </div>
     <label className="block font-medium">Question type
